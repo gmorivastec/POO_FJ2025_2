@@ -127,10 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Helicopter.cpp" />
+    <ClCompile Include="Motorcycle.cpp" />
+    <ClCompile Include="OOPUtils.cpp" />
     <ClCompile Include="Project2.cpp" />
     <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Helicopter.h" />
+    <ClInclude Include="Motorcycle.h" />
+    <ClInclude Include="OOPUtils.h" />
     <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

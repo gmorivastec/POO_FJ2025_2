@@ -5,6 +5,9 @@
 #include <string>
 #include <vector>
 #include "Vehicle.h"
+#include "Motorcycle.h"
+#include "Helicopter.h"
+#include "OOPUtils.h"
 
 // UML (x)
 // fixing de cin
@@ -44,9 +47,9 @@ int main2()
     return -1;
 }
 
-int main() {
+void main3() {
     
-    Vehicle v1;
+    //Vehicle v1;
 
     // let's do some memory leaks! 
     // yay!!
@@ -62,7 +65,7 @@ int main() {
     // old school pointers and smart pointers
     // smart pointers link - https://learn.microsoft.com/es-es/cpp/cpp/smart-pointers-modern-cpp?view=msvc-170
 
-    Vehicle* v2 = new Vehicle();
+    //Vehicle* v2 = new Vehicle();
 
     // POINTERS
     // upside - you can reference a particular object anywhere! (YAY!)
@@ -109,5 +112,55 @@ int main() {
         std::cout << currentNumber << std::endl;
     }
 
-    delete v2;
+    //delete v2;
+}
+
+int main() {
+
+    // POLYMORPHISM
+    // poly + morphism
+
+    // a single object can represent different types / classes
+    Helicopter h1;
+    Motorcycle m1;
+
+    std::cout << h1.move() << std::endl;
+    std::cout << m1.move() << std::endl;
+
+
+    // polymorphism in action!
+    // remember * is for a pointer
+    // & - reference, get memory address of an object
+    // we MUST use destroy where we do NEW
+    Vehicle* v1 = &h1;
+    Vehicle* v2 = &m1;
+
+    // can I invoke move() on a vehicle?
+    // YES! the object contains a reference to a subclass' object
+    // arrow operator 
+    // when using a pointer instead of . we use ->
+    // it is used to access a member (same as .)
+    std::cout << v1->move() << std::endl;
+    std::cout << v2->move() << std::endl;
+
+    std::vector<Vehicle*> vehicleContainer;
+
+    vehicleContainer.push_back(v1);
+    vehicleContainer.push_back(&m1);
+
+    std::cout << "**** PRINTING A VECTOR ****" << std::endl;
+    for (Vehicle* currentVehicle : vehicleContainer) {
+    
+        std::cout << currentVehicle->move() << std::endl;
+    }
+
+    // HOW TO ACCESS A STATIC MEMBER
+    // Class::member()
+
+    OOPUtils::staticTest();
+
+    // this doesn't work:
+    // Vehicle v1 = h1;
+
+
 }
