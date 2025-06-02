@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 #include "Vehicle.h"
 #include "Motorcycle.h"
 #include "Helicopter.h"
@@ -115,7 +116,7 @@ void main3() {
     //delete v2;
 }
 
-int main() {
+void main4() {
 
     // POLYMORPHISM
     // poly + morphism
@@ -164,3 +165,66 @@ int main() {
 
 
 }
+
+// operator overload
+std::ostream& operator<<(std::ostream& os, const Vehicle& v) {
+    os << v.anio << " modelo: " << v.modelo;
+    return os;
+}
+
+int main() {
+    
+    // splitting a string
+    std::string source = "some%!test%!hello!";
+    std::string delimiter = "%!";
+
+    std::vector<std::string> parts = OOPUtils::split(source, delimiter);
+    for (std::string current : parts) {
+        std::cout << "PART: " << current << std::endl;
+    }
+
+    // file reading
+
+    // get reference to file
+    // IMPORTANT NOTE 
+    // path - string that indicates a resource's location
+    // 2 choices:
+    // 1 - relative path
+    // 2 - absolute path
+    std::ifstream file("input.txt");
+    // std::ifstream file("C:/Users\Memo\OOP\Project2\input.txt");
+
+    std::string currentLine;
+
+    // do the actual reading
+    if (file.is_open()) {
+
+        // go through the file and read line by line
+        while (std::getline(file, currentLine)) {
+            std::cout << "FILE READING: " << currentLine << std::endl;
+        }
+
+        file.close();
+    }
+    else {
+        std::cerr << "FATAL AND TERRIBLE ERROR OPENING FILE!" << std::endl;
+    }
+
+    // operator << overload example
+    Motorcycle motito;
+
+    std::cout << motito << std::endl;
+}
+
+/*
+    TOPICS FOR YOUR EXAM (YAY!):
+    - Classes
+    - Objects
+    - access modifiers (private, protected, public)
+    - Inheritance (polymorphism)
+    - Abstract methods (pure virtual)
+    - Pointers (new, delete)
+    - using vector 
+    - std::cout, std::endl
+
+*/

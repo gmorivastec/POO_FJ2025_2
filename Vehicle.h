@@ -4,6 +4,11 @@
 class Vehicle
 {
 	public:
+
+		// JUST FOR THE EXAMPLE!
+		int anio = 2025;
+		std::string modelo = "vehiculo chido";
+
 		// constructor
 		Vehicle();
 

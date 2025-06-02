@@ -14,7 +14,11 @@ class OOPUtils
 	public:
 		static void staticTest();
 		static void cleanCin();
-		static std::vector<std::string> split(std::string delimiter);
+
+		// 2 ways to send a value through an argument
+		// - copy
+		// - reference
+		static std::vector<std::string> split(const std::string& source, const std::string& delimiter);
 
 };
 
